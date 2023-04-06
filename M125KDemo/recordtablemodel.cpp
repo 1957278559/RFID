@@ -82,6 +82,10 @@ bool RecordTableModel::deleteByTagId(const QString &tagId)
         if(data(index(row, 0)).toString() == tagId)
             removeRow(row);
     }
+    //解决删除某一行后，该行框架还在
+    this->clear();
+    this->setTable(tableName);
+    this->select();
     return submitAll();
 }
 /**
